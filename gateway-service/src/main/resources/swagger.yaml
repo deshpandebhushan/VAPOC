@@ -1,0 +1,93 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Alert/Publishing"
+tags:
+- name: "Operations"
+  description: "Operations on Alert"
+basePath: /alert
+schemes:
+- "https"
+- "http"
+paths:
+  /create:
+    post:
+      tags:
+      - "Alert"
+      summary: "Create a new alert"
+      description: ""
+      operationId: "create Alert"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Alert needs to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/Alert"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - basicAuth: []
+      deprecated: false
+  /healthcheck:
+    get:
+      tags:
+      - "Alert"
+      summary: "Create a new alert"
+      description: "It will give you health check for alert services"
+      operationId: "Health check alert"
+      responses:
+        200:
+          description: ""
+      security:
+      - basicAuth: []
+      deprecated: false
+  
+securityDefinitions:
+  basicAuth:
+    type: basic
+    
+  api_key:
+    type: "apiKey"
+    name: "username"
+    in: "header"
+definitions:
+  Alert:
+    type: "object"
+    properties:
+      customerID:
+        type: "string"
+      location:
+        type: "string"
+      Payload:
+        type: "object"
+        properties:
+          email:
+            type: string
+            format: email
+          alertPriority:
+            type: string
+            description: Alert Priority
+            enum:
+              - High
+              - Low
+              - Medium
+              - Urgent
+          assetId:
+            type: string
+          description:
+            type: string
+            description: This will tell more on Alert
+    xml:
+      name: "Alert"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
