@@ -38,7 +38,7 @@ public class GatewayRequestProcessService {
 		Map<String, Object> headers = new HashMap<String, Object>();
 		headers.put("customer", input.get("customer").toUpperCase());
 		input.remove("customer");
-		byte[] result = template.requestBodyAndHeaders("direct:forwardToCreate", input, null, byte[].class);
+		byte[] result = template.requestBodyAndHeaders("direct:forwardToCreate", input, headers, byte[].class);
 		System.out.println("Out Put " + new String(result));
 		return new ResponseEntity<String>(new String(result), HttpStatus.OK);
 

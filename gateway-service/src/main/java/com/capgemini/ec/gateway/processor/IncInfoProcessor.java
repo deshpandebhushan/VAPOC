@@ -1,18 +1,13 @@
 package com.capgemini.ec.gateway.processor;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
-import org.apache.camel.json.simple.parser.JSONParser;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 import com.capgemini.ec.gateway.model.IncidentInfo;
-import com.capgemini.ec.gateway.model.ResultWrapper;
 
 @Component
 public class IncInfoProcessor  {
